@@ -1,0 +1,4 @@
+MVC :
+Pour naviguer dans le site, on ustilise la variable get "s" (comme section).
+La variable s va appeler le controleur /page/<section>/ctrl.php
+    Comme le fichier index.php, le controleur de la section peut aussi se contruire avec des actions qu'il irra chercher dans /page/<section>/action

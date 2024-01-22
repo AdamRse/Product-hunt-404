@@ -1,5 +1,6 @@
 <?php
 ob_start(); // On stock tout le contenu qui va suivre en mémoire avant de l'envoyer directement
+include "./php_config/init.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">

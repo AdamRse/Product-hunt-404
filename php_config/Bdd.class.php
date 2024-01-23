@@ -40,5 +40,33 @@ private function checkError(PDOStatement $pdoS){
     }
 }
 
+///////////////////////////////////// ACCES BDD
+
+//USER
+public function getUserName($name){
+    $q = $this->prepare("SELECT * FROM users WHERE nom = ?");
+    $q->execute([$name]); $this->checkError($q);
+    return $q->fetch(PDO::FETCH_ASSOC);
+}
+public function addUser($tableauForm){// On attend les index "nom", "pass", "mail"
+    $q = $this->prepare("INSERT INTO users(nom, pass, mail) VALUES (:nom, :pass, :mail)");
+    $q->execute($tableauForm); $this->checkError($q);
+    return $q->fetch(PDO::FETCH_ASSOC);
+}
+
+//CATEGORIES
+public function getCategories($limit = 10){
+    $q = $this->query("SELECT * FROM categories LIMIT 0, $limit");
+    $this->checkError($q);
+    return $q->fetchAll(PDO::FETCH_ASSOC);
+}
+public function addCategorie($tableauForm){// On attend les index "nom", "pass", "mail"
+    $q = $this->prepare("INSERT INTO users(nom, pass, mail) VALUES (:nom, :pass, :mail)");
+    $q->execute($tableauForm); $this->checkError($q);
+    return $q->fetch(PDO::FETCH_ASSOC);
+}
+
+
+
 }
 $Bdd = new Bdd();

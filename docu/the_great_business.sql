@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 22, 2024 at 01:47 PM
+-- Generation Time: Jan 23, 2024 at 10:09 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `projets_id` int(11) NOT NULL,
   `tag` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -78,6 +77,18 @@ CREATE TABLE `projets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `projet_categories`
+--
+
+CREATE TABLE `projet_categories` (
+  `id_projet` int(11) NOT NULL,
+  `id_categories` int(11) NOT NULL,
+  `ts` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -120,6 +131,13 @@ ALTER TABLE `likes`
 --
 ALTER TABLE `projets`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projet_categories`
+--
+ALTER TABLE `projet_categories`
+  ADD PRIMARY KEY (`id_projet`,`id_categories`),
+  ADD KEY `id_categories` (`id_categories`);
 
 --
 -- Indexes for table `users`
@@ -179,6 +197,13 @@ ALTER TABLE `commentaires`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`projets_id`) REFERENCES `projets` (`id`);
+
+--
+-- Constraints for table `projet_categories`
+--
+ALTER TABLE `projet_categories`
+  ADD CONSTRAINT `projet_categories_ibfk_1` FOREIGN KEY (`id_projet`) REFERENCES `projets` (`id`),
+  ADD CONSTRAINT `projet_categories_ibfk_2` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

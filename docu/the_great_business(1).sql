@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 23, 2024 at 10:19 AM
+-- Generation Time: Jan 23, 2024 at 12:05 PM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -131,7 +131,8 @@ ALTER TABLE `likes`
 --
 ALTER TABLE `projets`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nom` (`nom`);
+  ADD UNIQUE KEY `nom` (`nom`),
+  ADD KEY `users_id` (`users_id`);
 
 --
 -- Indexes for table `projet_categories`
@@ -198,6 +199,12 @@ ALTER TABLE `commentaires`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`projets_id`) REFERENCES `projets` (`id`);
+
+--
+-- Constraints for table `projets`
+--
+ALTER TABLE `projets`
+  ADD CONSTRAINT `projets_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `projet_categories`

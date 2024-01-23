@@ -1,5 +1,6 @@
 <footer>
 
+
 </footer>
 <?php
 //Ajout dynamique de tous les scripts js de la page

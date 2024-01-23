@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 23, 2024 at 10:09 AM
+-- Generation Time: Jan 23, 2024 at 10:19 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -130,7 +130,8 @@ ALTER TABLE `likes`
 -- Indexes for table `projets`
 --
 ALTER TABLE `projets`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nom` (`nom`);
 
 --
 -- Indexes for table `projet_categories`

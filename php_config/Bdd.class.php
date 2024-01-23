@@ -1,7 +1,7 @@
 <?php
 class Bdd extends PDO{
 
-    private $_error = array();
+    private $_error = false;
 
     private const sgbd = 'mysql';
     private const server = "127.0.0.1";
@@ -29,7 +29,7 @@ public function prepare(string $sql, array $opt = []): PDOStatement|false {
 }
 public function returErrorDatabase(){
     $error = $this->_error;
-    return (empty($this->_error[1]))?false:"Mysql renvoie une erreur : ".$error[2]."<br/>Mysql code : ".$error[1]."<br/>PDO code : ".$error[2];
+    return (empty($this->_error[0]))?$this->_error:"Mysql renvoie une erreur : ".$error[2]."<br/>Mysql code : ".$error[1]."<br/>PDO code : ".$error[2];
 }
 private function noTags($string){
     return preg_replace("/<(^>)+>/", "", $string);
@@ -49,9 +49,29 @@ public function getUserName($name){
     return $q->fetch(PDO::FETCH_ASSOC);
 }
 public function addUser($tableauForm){// On attend les index "nom", "pass", "mail"
+    $tableauForm['pass']=password_hash($tableauForm['pass'], PASSWORD_BCRYPT);
+    $tableauForm['nom']=$this->noTags($tableauForm['nom']);
     $q = $this->prepare("INSERT INTO users(nom, pass, mail) VALUES (:nom, :pass, :mail)");
     $q->execute($tableauForm); $this->checkError($q);
     return $q->fetch(PDO::FETCH_ASSOC);
+}
+public function connectUser($username, $password){
+    $rt = false;
+    $q = $this->prepare("SELECT * FROM users WHERE nom = ?");
+    if($q->execute([$username])){
+        if($user=$q->fetch(PDO::FETCH_ASSOC)){
+            if(password_verify($password, $user['pass'])){
+                $rt = $user;
+            }
+            else
+                $this->_error = "Mot de passe erroné";
+        }
+        else
+            $this->_error = "L'utilisateur $username n'est pâs en BDD.";
+    }
+    else
+        $this->checkError($q);
+    return $rt;
 }
 
 //CATEGORIES
@@ -60,13 +80,11 @@ public function getCategories($limit = 10){
     $this->checkError($q);
     return $q->fetchAll(PDO::FETCH_ASSOC);
 }
-public function addCategorie($tableauForm){// On attend les index "nom", "pass", "mail"
-    $q = $this->prepare("INSERT INTO users(nom, pass, mail) VALUES (:nom, :pass, :mail)");
-    $q->execute($tableauForm); $this->checkError($q);
+public function addCategorie($categorie){
+    $q = $this->prepare("INSERT INTO categories(tag) VALUES (?)");
+    $q->execute([$categorie]); $this->checkError($q);
     return $q->fetch(PDO::FETCH_ASSOC);
 }
-
-
 
 }
 $Bdd = new Bdd();

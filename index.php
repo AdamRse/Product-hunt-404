@@ -11,6 +11,9 @@ include "./php_config/init.php";
 </head>
 <body>
     <?php
+    // echo "<pre>SESSION :";
+    // var_dump($_SESSION);
+    // echo "</pre>";
     include "./htmlElements/header.php";// Le contenu HTML du header (haut de la page html)
 
     $section = "./page/accueil/ctrl.php"; // La section par défaut va afficher l'accueil

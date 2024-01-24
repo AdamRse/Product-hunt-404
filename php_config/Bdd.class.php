@@ -1,11 +1,10 @@
 <?php
-
-
-
-
 class Bdd extends PDO{
 
     private $_error = false;
+    private $_sqlUserAll = "SELECT u.*, p.nom AS nom_projet_like, COUNT(l.projets_id) AS nbLike, pc.nom AS nom_projet_commente, c.comment AS commentaire
+                            FROM  users u LEFT JOIN likes l ON u.id = l.users_id LEFT JOIN projets p ON l.projets_id = p.id LEFT JOIN commentaires c ON u.id = c.users_id LEFT JOIN projets pc ON c.projets_id = pc.id
+                            WHERE u.nom = ? GROUP BY u.id, nom_projet_like, nom_projet_commente";
 
     private const sgbd = 'mysql';
     private const server = "127.0.0.1";
@@ -52,8 +51,8 @@ public function getUserId($id){
     $q->execute([$id]); $this->checkError($q);
     return $q->fetch(PDO::FETCH_ASSOC);
 }
-public function getUserName($name){
-    $q = $this->prepare("SELECT * FROM users WHERE nom = ?");
+public function getUserName($name, $all = false){
+    $q = $this->prepare($all ? $this->_sqlUserAll : "SELECT * FROM users WHERE nom = ?");
     $q->execute([$name]); $this->checkError($q);
     return $q->fetch(PDO::FETCH_ASSOC);
 }
@@ -66,7 +65,7 @@ public function addUser($tableauForm){// On attend les index "nom", "pass", "mai
 }
 public function connectUser($username, $password){
     $rt = false;
-    $q = $this->prepare("SELECT * FROM users WHERE nom = ?");
+    $q = $this->prepare($this->_sqlUserAll);
     if($q->execute([$username])){
         if($user=$q->fetch(PDO::FETCH_ASSOC)){
             if(password_verify($password, $user['pass'])){

@@ -7,7 +7,7 @@
     <form action="./?s=inscription" method="post" class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-600">Pseudo</label>
-            <input type="text" name="name" id="name" class="mt-1 p-2 w-full border rounded-md">
+            <input type="text" name="nom" id="name" class="mt-1 p-2 w-full border rounded-md">
         </div>
         <div class="mb-4">
             <label for="mail" class="block text-sm font-medium text-gray-600">Mail</label>

@@ -1,5 +1,5 @@
 <?php
-if (!empty($_POST['name']) && !empty($_POST['pass']) && !empty($_POST['mail'])){
+if (!empty($_POST['nom']) && !empty($_POST['pass']) && !empty($_POST['mail'])){
     require "action/registerBdd.php";
 }
 else{

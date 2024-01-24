@@ -1,37 +1,34 @@
 <header>
-    <nav class="bg-black text-white py-3 flex justify-between">
+    <nav class="bg-black text-white py-2 flex justify-between">
 
-        <!-- Image Accueil -->
+<!-- Image Accueil -->
         <div class="flex items-center">
             <img src="./images/yoda.webp" class="h-16" alt="Flowbite Logo" />
 
-            <!-- Bouton Accueil -->
+<!-- Bouton Accueil -->
             <a href="/" class="flex items-center ml-2">
-                <span class="font-semibold">TH€ GR€AT BUSINE$$</span>
+                <span class="text-lg font-semibold focus:outline-none group-hover:underline">TH€ GR€AT BUSINE$$</span>
             </a>
         </div>
+        
+<!-- Barre de Recherche -->
+                <div class="flex items-center justify-end">
+                <div class="relative">
+        <input
+            type="text"
+            placeholder="Rechercher..."
+            class="px-4 py-3 rounded bg-gray-700 text-white focus:outline-none focus:ring focus:border-blue-300"
+        />
+        <button class="text-lg font-semibold focus:outline-none group-hover:underline">
+            RECHERCHE
+        </button>
+    </div>
 
-        <div class="relative">
-            <a href="./?s=inscription" class="text-white">Inscription</a>
-        </div>
-
-        <!-- Barre de Recherche -->
-        <div class="relative flex items-center">
-            <input
-                type="text"
-                placeholder="Rechercher..."
-                class="px-4 py-3 rounded bg-gray-700 text-white focus:outline-none focus:ring focus:border-blue-300 w-full"
-            />
-            <button class="ml-2">
-                <!-- Ajoutez ici une icône de recherche ou du texte pour le bouton de recherche -->
-                Rechercher
-            </button>
-        </div>
 
         <!-- Menu Catégories -->
         <div class="relative group">
             <button class="text-lg font-semibold focus:outline-none group-hover:underline">
-                Catégories
+            CATÉGORIES
             </button>
             <ul class="absolute hidden bg-gray-700 text-white mt-2 p-2 space-y-2">
                 <!-- Liste des catégories -->
@@ -42,12 +39,16 @@
             </ul>
         </div>
 
-        <!-- Lien Contact -->
-        <a href="/contact" class="text-lg font-semibold focus:outline-none group-hover:underline">Contact</a>
+        <div>
+            <a href="/contact" class="text-lg font-semibold focus:outline-none group-hover:underline"> CONTACT</a>
+        </div>
 
-        <!-- Menu Compte -->
         <div class="relative">
-            <a href="./?s=compte" class="text-white">Compte</a>
+            <a href="./?s=compte" class="text-lg font-semibold focus:outline-none group-hover:underline">COMPTE</a>
+        </div>
+
+        <div class="relative">
+            <a href="./?s=inscription" class="text-lg font-semibold focus:outline-none group-hover:underline">INSCRIPTION</a>
         </div>
     </nav>
 </header>

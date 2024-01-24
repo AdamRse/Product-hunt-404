@@ -1,2 +1,2 @@
 <?php
-$Bdd->addUser($_POST);
+$Bdd->addUser($_POST)

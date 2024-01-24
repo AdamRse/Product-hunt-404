@@ -1,4 +1,5 @@
 <?php
+require "action/compte.php";
 
 if(USER){
     require "action/compteBdd.php";

@@ -46,18 +46,8 @@
         <a href="/contact" class="text-lg font-semibold focus:outline-none group-hover:underline">Contact</a>
 
         <!-- Menu Compte -->
-        <div class="relative group">
-            <button class="text-lg font-semibold focus:outline-none group-hover:underline">
-                Compte
-            </button>
-            <!-- Ajoutez ici les éléments de votre menu Compte -->
-            <!-- par exemple, une liste d'options -->
-            <ul class="absolute hidden bg-gray-700 text-white mt-2 p-2 space-y-2">
-                <li><a href="/mon-compte">Mon Compte</a></li>
-                <li><a href="/parametres">Paramètres</a></li>
-                <li><a href="/deconnexion">Déconnexion</a></li>
-                <!-- Ajoutez d'autres liens du menu Compte ici au besoin -->
-            </ul>
+        <div class="relative">
+            <a href="./?s=compte" class="text-white">Compte</a>
         </div>
     </nav>
 </header>

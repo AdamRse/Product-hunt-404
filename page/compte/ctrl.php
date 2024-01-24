@@ -1,2 +1,2 @@
 <?php
-require P_ROOT."/page/compte/action/compte.php";
+require "action/compte.php";

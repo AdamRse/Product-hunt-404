@@ -2,3 +2,10 @@ MVC :
 Pour naviguer dans le site, on ustilise la variable get "s" (comme section).
 La variable s va appeler le controleur /page/<section>/ctrl.php
     Comme le fichier index.php, le controleur de la section peut aussi se contruire avec des actions qu'il irra chercher dans /page/<section>/action
+
+Pour déconnecter un utilisateur, on envoir la requête ?dc
+dc peut être vide donc pas besoin de la remplir avec un =
+    Par exemple, une url qui déconnecte : http://product-hunt-404.dvl.to?dc
+    Ou http://product-hunt-404.dvl.to?s=compte&dc
+
+La constante USER sert à savoir si on est conecté

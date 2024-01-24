@@ -47,6 +47,11 @@ private function checkError(PDOStatement $pdoS){
 ///////////////////////////////////// ACCES BDD
 
 //USER
+public function getUserId($id){
+    $q = $this->prepare("SELECT * FROM users WHERE id = ?");
+    $q->execute([$id]); $this->checkError($q);
+    return $q->fetch(PDO::FETCH_ASSOC);
+}
 public function getUserName($name){
     $q = $this->prepare("SELECT * FROM users WHERE nom = ?");
     $q->execute([$name]); $this->checkError($q);

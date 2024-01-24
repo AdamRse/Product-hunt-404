@@ -1,3 +1,3 @@
 <?php
-$Bdd = new Bdd();
+var_dump($Bdd);
 $Bdd->addUser($_POST);

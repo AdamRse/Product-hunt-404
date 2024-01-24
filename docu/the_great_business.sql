@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 23, 2024 at 12:05 PM
+-- Generation Time: Jan 24, 2024 at 08:13 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -32,6 +32,14 @@ CREATE TABLE `categories` (
   `tag` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `tag`) VALUES
+(1, 'Jeu vidéo'),
+(2, 'Foot bawl');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +54,14 @@ CREATE TABLE `commentaires` (
   `ts` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `comment`, `projets_id`, `users_id`, `ts`) VALUES
+(1, 'Je commente ton projet', 1, 2, '2024-01-23 13:12:58'),
+(2, 'Je commente aussi', 2, 1, '2024-01-23 13:12:58');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +75,14 @@ CREATE TABLE `likes` (
   `tq` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `projets_id`, `users_id`, `tq`) VALUES
+(1, 2, 1, '2024-01-23 13:11:46'),
+(2, 1, 2, '2024-01-23 13:11:46');
+
 -- --------------------------------------------------------
 
 --
@@ -70,9 +94,17 @@ CREATE TABLE `projets` (
   `users_id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `intro` varchar(255) NOT NULL,
-  `likes` int(11) NOT NULL,
+  `likes` int(11) DEFAULT NULL,
   `ts` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `projets`
+--
+
+INSERT INTO `projets` (`id`, `users_id`, `nom`, `intro`, `likes`, `ts`) VALUES
+(1, 1, 'Projet Adam', 'Je vais faire du back-end principallement je pense', 0, '2024-01-23 13:11:04'),
+(2, 2, 'Projet Abdel', 'Je fais une super navbar tkt', 0, '2024-01-23 13:11:04');
 
 -- --------------------------------------------------------
 
@@ -85,6 +117,15 @@ CREATE TABLE `projet_categories` (
   `id_categories` int(11) NOT NULL,
   `ts` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `projet_categories`
+--
+
+INSERT INTO `projet_categories` (`id_projet`, `id_categories`, `ts`) VALUES
+(1, 1, '2024-01-23 14:09:18'),
+(2, 1, '2024-01-23 14:09:48'),
+(2, 2, '2024-01-23 14:09:18');
 
 -- --------------------------------------------------------
 
@@ -99,6 +140,14 @@ CREATE TABLE `users` (
   `mail` varchar(127) NOT NULL,
   `ts` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `pass`, `mail`, `ts`) VALUES
+(1, 'Adam', 'Unpass', 'adamrse@gmail.com', '2024-01-23 13:08:55'),
+(2, 'Abdel', 'Unpass', 'abdel@abdel.abdel', '2024-01-23 13:08:55');
 
 --
 -- Indexes for dumped tables
@@ -156,31 +205,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `projets`
 --
 ALTER TABLE `projets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

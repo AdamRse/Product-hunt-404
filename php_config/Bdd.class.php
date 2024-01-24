@@ -87,4 +87,3 @@ public function addCategorie($categorie){
 }
 
 }
-$Bdd = new Bdd();

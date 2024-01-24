@@ -1,8 +1,8 @@
 <?php
-require "action/compte.php";
+
 
 if(USER){
-    require "action/compteBdd.php";
+    require "action/compte.php";
 }
 else{
     "action/compteBdd.php";

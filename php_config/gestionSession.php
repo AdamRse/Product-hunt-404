@@ -1,9 +1,4 @@
 <?php
-if(isset($_REQUEST["dc"])){//Déconneion
-    unset($_SESSION["user"]);
-    setcookie('TBD-cn', '', -1);
-}
-
 //Si l'utilisateur n'est pas connecté, on vois si on peut le connecter par tous les moyens
 if(empty($_SESSION["user"])){
 
@@ -31,3 +26,7 @@ if(empty($_SESSION["user"])){
     }
 }
 
+if(isset($_REQUEST["dc"])){//Déconneion
+    unset($_SESSION["user"]);
+    setcookie('TBD-cn', '', -1);
+}

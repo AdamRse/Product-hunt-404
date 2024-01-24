@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 class Bdd extends PDO{
 
     private $_error = false;
@@ -87,3 +91,4 @@ public function addCategorie($categorie){
 }
 
 }
+$Bdd = new Bdd();

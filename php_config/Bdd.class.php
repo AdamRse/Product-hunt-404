@@ -94,13 +94,13 @@ public function connectUser($username, $password){
 }
 
 //PROJET
-public function addProjet($tableauForm, $categories = array()){//$tableauForm : "nom", "intro", "detail" ; $categories peut être vide, si plein attend juste le nom de la catégorie. Si plusieurs catégoriels, on les attend sous forme de tableau ["categorie1", "categorie2", ...]
+public function addProjet($tableauForm, $categories = array()){//$tableauForm : "nom", "intro", "detail", "lien" (lien peut être vide) ; $categories peut être vide, si plein attend juste le nom de la catégorie. Si plusieurs catégoriels, on les attend sous forme de tableau ["categorie1", "categorie2", ...]
     $rt = false;
     if(!empty($_SESSION['user']['id'])){
         $tableauForm=$this->noTags($tableauForm);
         $tableauForm['users_id']=$_SESSION['user']['id'];
         if(is_string($categories)) $categories = array($categories);
-        $q = $this->prepare("INSERT INTO projets(users_id, nom, intro, detail) VALUES (:users_id, :nom, :intro, :detail)");
+        $q = $this->prepare("INSERT INTO projets(users_id, nom, intro, detail, lien) VALUES (:users_id, :nom, :intro, :detail, :lien)");
         if($q->execute($tableauForm))
             $rt = true;
         else

@@ -12,7 +12,7 @@ include "./php_config/init.php";
 <body>
     <?php
     echo "<pre>SESSION :";
-    var_dump($_SESSION, $_SERVER);
+    var_dump($_SESSION);
     echo "</pre>";
     include "./htmlElements/header.php";// Le contenu HTML du header (haut de la page html)
 

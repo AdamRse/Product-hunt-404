@@ -1,33 +1,34 @@
-    <!-- Espace personnel -->
-    <section class="container mx-auto p-4">
-        <form action="./?s=comptes" method="post" class="max-w-md mx-auto bg-white p-8 rounded shadow-md"><div class="bg-white p-6 rounded-md shadow-md">
-        <h2 class="text-2xl font-semibold mb-4">Mon Espace Personnel</h2>
 
-        <!-- Informations personnelles -->
-        <div class="mb-4">
-    <h3 id="titreInfo" class="text-xl font-semibold mb-2 text-green-400 cursor-pointer" id="toggleInformation">
-        Mes Informations
-    </h3>
-    <p id="info" class="hidden text-xl font-semibold mb-2 text-green-400">
-        <?= $_SESSION['user']['nom'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.
-        $_SESSION['user']['mail']  ?></p>
+<div class="flex">
+        <!-- Mes Informations -->
+        <div class="w-1/4 bg-green-500 p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">Mes Informations</h3>
+            <form>
+                <label for="nom" class="block text-white mb-2">Nom :</label>
+                <input type="text" id="nom" name="nom" class="w-full p-2 mb-4 bg-white rounded"value="<?=$_SESSION['user']['nom']?>">
 
-        <!-- Likes -->
-        <div class="mb-4">
-            <h3 class="text-xl font-semibold mb-2 text-red-600">Mes Likes</h3>
+                <label for="email" class="block text-white mb-2">Email :</label>
+                <input type="email" id="email" name="email" class="w-full p-2 mb-4 bg-white rounded"value="<?=$_SESSION['user']['mail']?>">
+
+                <button type="submit" class="bg-white text-green-500 px-4 py-2 rounded hover:bg-gray-200 focus:outline-none focus:shadow-outline-green">Modifier</button>
+            </form>
+        </div>
+
+        <!-- Mes Likes -->
+        <div class="w-1/4 bg-red-500 p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">Mes Likes</h3>
             <!-- Ajoutez ici les éléments pour afficher les likes que vous avez donnés -->
         </div>
 
-        <!-- Commentaires -->
-        <div class="mb-4">
-            <h3 class="text-xl font-semibold mb-2 text-blue-600">Mes Commentaires</h3>
+        <!-- Mes Commentaires -->
+        <div class="w-1/4 bg-blue-500 p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">Mes Commentaires</h3>
             <!-- Ajoutez ici les éléments pour afficher les commentaires que vous avez rédigés -->
         </div>
 
-        <!-- Projets -->
-        <div>
-            <h3 class="text-xl font-semibold mb-2 text-yellow-500">Mes Projets</h3>
+        <!-- Mes Projets -->
+        <div class="w-1/4 bg-yellow-500 p-4">
+            <h3 class="text-xl font-semibold mb-2 text-white">Mes Projets</h3>
             <!-- Ajoutez ici les éléments pour afficher vos projets -->
         </div>
     </div>
-</div>

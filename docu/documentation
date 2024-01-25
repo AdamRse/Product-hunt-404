@@ -13,5 +13,8 @@ La constante USER sert à savoir si on est conecté
 //PAGES
 -compte : est l'espace personnel des users, on trouvera toutes ses informatiosn personnel, ces likes, ces commentaires, et ces projets.
 
-//PAGES
--inscription : c'est pour l'inscription au site (formulaire & envoi)
+-inscription : c'est pour l'inscription au site (formulaire & envoi).
+
+-new_project : c'est là qu'on envoie notre projet.
+
+projet : Elle servira à afficher la liste de tous les projets du site.

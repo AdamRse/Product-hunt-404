@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 24, 2024 at 08:21 AM
+-- Generation Time: Jan 25, 2024 at 10:02 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -37,8 +37,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `tag`) VALUES
-(1, 'Jeu vidéo'),
-(2, 'Foot bawl');
+(2, 'Foot bawl'),
+(1, 'Jeu vidéo');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,9 @@ CREATE TABLE `projets` (
   `id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
+  `detail` text NOT NULL,
   `intro` varchar(255) NOT NULL,
+  `lien` varchar(511) DEFAULT NULL,
   `likes` int(11) DEFAULT NULL,
   `ts` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -102,9 +104,9 @@ CREATE TABLE `projets` (
 -- Dumping data for table `projets`
 --
 
-INSERT INTO `projets` (`id`, `users_id`, `nom`, `intro`, `likes`, `ts`) VALUES
-(1, 1, 'Projet Adam', 'Je vais faire du back-end principallement je pense', 0, '2024-01-23 13:11:04'),
-(2, 2, 'Projet Abdel', 'Je fais une super navbar tkt', 0, '2024-01-23 13:11:04');
+INSERT INTO `projets` (`id`, `users_id`, `nom`, `detail`, `intro`, `lien`, `likes`, `ts`) VALUES
+(1, 1, 'Projet Adam', '', 'Je vais faire du back-end principallement je pense', NULL, 0, '2024-01-23 13:11:04'),
+(2, 2, 'Projet Abdel', '', 'Je fais une super navbar tkt', NULL, 0, '2024-01-23 13:11:04');
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nom`, `pass`, `mail`, `ts`) VALUES
 (1, 'Adam', 'Unpass', 'adamrse@gmail.com', '2024-01-23 13:08:55'),
-(2, 'Abdel', 'Unpass', 'abdel@abdel.abdel', '2024-01-23 13:08:55');
+(2, 'Abdel', 'Unpass', 'abdel@abdel.abdel', '2024-01-23 13:08:55'),
+(3, 'Adam2', '$2y$10$uOSUE8Ofd/d.ekWPphaLNu4gYEvKFK3H30vCZxwi4tqo9AhVjw2cG', 'zefzehvzef@efzef.de', '2024-01-24 08:53:04'),
+(4, 'Adam3', '$2y$10$D2CNtp4Uyiue4PDD.YBYFO0DtkFci.kG90AxWQAwMhGMK.6GxuzXq', 'adamrse@gmail.com', '2024-01-24 14:00:45');
 
 --
 -- Indexes for dumped tables
@@ -157,7 +161,8 @@ INSERT INTO `users` (`id`, `nom`, `pass`, `mail`, `ts`) VALUES
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tag` (`tag`);
 
 --
 -- Indexes for table `commentaires`
@@ -205,7 +210,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `commentaires`
@@ -229,7 +234,7 @@ ALTER TABLE `projets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -1,2 +1,4 @@
 <?php
-require P_ROOT."/page/accueil/action/defaut.php";
+
+require "action/projet.php";
+

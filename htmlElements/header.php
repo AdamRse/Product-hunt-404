@@ -11,21 +11,11 @@
             </a>
         </div>
 
-        <div class="flex items-center justify-center"> <!-- Utilisation de justify-center -->
+        <div class="ml-4">
+                <a href="./?s=new_project" class="text-lg font-semibold focus:outline-none group-hover:underline">PROJET</a>
+        </div>
 
-            <!-- Menu Catégories -->
-            <div class="relative group ml-4">
-                <button class="text-lg font-semibold focus:outline-none group-hover:underline">
-                    CATÉGORIES
-                </button>
-                <ul class="absolute hidden bg-gray-700 text-white mt-2 p-2 space-y-2">
-                    <!-- Liste des catégories -->
-                    <li><a href="/categorie1">Catégorie 1</a></li>
-                    <li><a href="/categorie2">Catégorie 2</a></li>
-                    <li><a href="/categorie3">Catégorie 3</a></li>
-                    <!-- Ajoutez d'autres catégories ici au besoin -->
-                </ul>
-            </div>
+        <div class="flex items-center justify-center"> <!-- Utilisation de justify-center -->
 
             <div class="ml-4">
                 <a href="/contact" class="text-lg font-semibold focus:outline-none group-hover:underline">CONTACT</a>
@@ -37,9 +27,25 @@
             <?php
             if(!USER){
             ?>
+            <div id="connect">
+                <h1>Connexion</h1>
+                <form action="./" method="post">
+                    <input class="text-black" type="text" name="nom" placeholder="nom">
+                    <input class="text-black" type="text" name="pass" placeholder="password">
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+            
             <div class="ml-4">
                 <a href="./?s=inscription" class="text-lg font-semibold focus:outline-none group-hover:underline">INSCRIPTION</a>
             </div>
+            <?php
+            }
+            else{
+            ?> 
+            <a href= "s=?compte&dc">
+                <button type="submit">Se déconnecter</button>
+            </a>
             <?php
             }
             ?>

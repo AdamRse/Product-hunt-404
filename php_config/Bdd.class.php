@@ -143,6 +143,9 @@ public function addProjetCategories($idProjet, $tabCategories){
         $this->checkError($q);
     return $rt;
 }
+public function getProjets(){
+    return $this->query("SELECT * FROM projets");
+}
 //CATEGORIES
 public function getCategories($limit = 10){
     $q = $this->query("SELECT * FROM categories LIMIT 0, $limit");

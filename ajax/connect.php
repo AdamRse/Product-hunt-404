@@ -16,6 +16,5 @@ if(!empty($_POST["name"]) && !empty($_POST['pass'])){
     else{
         $retour = "";
     }
-
 }
 returnAjax($retour, $code);

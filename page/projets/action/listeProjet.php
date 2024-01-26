@@ -5,7 +5,6 @@ $projets = $Bdd->getProjets();
 // echo "</pre>";
 foreach ($projets as $projet) {
 ?>
-    <!-- class="h-6 mr-3" -->
     <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
 
         <div class="border-b mb-5 flex justify-between text-sm">

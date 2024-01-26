@@ -19,27 +19,28 @@ $avatars = scandir(P_ROOT . "/images/avatars/");
         </div>
 
         <div class="text-neutral-500 text-xs dark:text-neutral-400 formkit-help" id="help-input_0">What do people call you?</div>
+        
+        <div class="block text-neutral-700 text-sm font-bold dark:text-neutral-300 !inline-flex mb-1 formkit-label" id="help-input_1">Select your avatar</div>
 
         <div class="border-b mb-5 flex justify-between text-sm">
-          <div class="text-indigo-600 flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase">
-            <?php
-            foreach ($avatars as $key => $value) {
-              if ($value != "." && $value != "..") {
+          
+        <?php
+    // Loop through avatars
+    foreach ($avatars as $key => $value) {
+        if ($value != "." && $value != "..") {
             ?>
-                <img class="w-8 h-8 rounded-full mr-2" src="./images/avatars/<?= htmlspecialchars($value) ?>" alt="Avatar">
+            <input id="<?= htmlspecialchars($key) ?>" type="radio" name="avatar" value="<?= htmlspecialchars($value) ?>" class="" />
+            <label for="<?= htmlspecialchars($key) ?>" class="cursor-pointer">
+                <img class="w-8 h-8 rounded-full mr-2 border border-black" src="./images/avatars/<?= htmlspecialchars($value) ?>" alt="Avatar">
+            </label>
             <?php
-              }
-            }
-            ?>
-            <?php
-            if (isset($projet["createur"])) {
-            ?>
-              <a href="#" class="font-semibold inline-block"><?= htmlspecialchars($projet["createur"]) ?></a>
-            <?php
-            }
-            ?>
-          </div>
-        </div>
+        }
+    }
+    ?>
+</div>
+</div>
+
+</div>
 
         <div data-v-41e980de="" class="group max-w-[20em] min-w-0 grow mb-4 data-[disabled]:select-none data-[disabled]:opacity-50 text-base formkit-outer" data-family="text" data-type="text" data-empty="true">
           <div class="flex flex-col items-start justify-start mb-1.5 last:mb-0 formkit-wrapper">

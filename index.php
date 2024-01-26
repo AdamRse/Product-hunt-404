@@ -9,7 +9,7 @@ include "./php_config/init.php";
     include "./htmlElements/conf_head.php";// Le contenu HTML de <head>
     ?>
 </head>
-<body>
+<body class="h-screen">
     <?php
     // echo "<pre>SESSION :";
     // var_dump($_SESSION);

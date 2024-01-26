@@ -26,8 +26,11 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <a href="./">
+          <a href="./" class=" pr-3">
             <img class="h-8 w-auto" src="./images/logoTGB.png" alt="Your Company">
+          </a>
+          <a href="./" class="text-white font-bold text-2xl">
+            THE GREAT BUSINESS
           </a>
         </div>
         <div class="hidden sm:ml-6 sm:block">
@@ -37,7 +40,7 @@
             <?php
             if(USER){
               ?>
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Créer un projet !</a>
+              <a href="./?s=new_projet" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Créer un projet !</a>
               <?php
             }
             ?>
@@ -52,7 +55,7 @@
             <button id="user-menu-button" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="./images/<?= USER ? "avatars/".$_SESSION['user']['avatar'] : "user-profile.png" ?>" alt=""/>
+              <img class="h-8 w-8 rounded-full" src="./images/<?= USER ? "avatars/".$_SESSION['user']['avatar'] : "user-profile.png"; ?>" alt=""/>
             </button>
           </div>
 
@@ -66,7 +69,7 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div id="menuUser" class="hidden text-center absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <div id="menuUser" class="hidden border-1 border-gray-500 text-center absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
             <?php
             if(USER){
@@ -77,16 +80,16 @@
             }
             else{
               ?>
-              <form method="post" action=".<?= substr($_SERVER['REQUEST_URI'], 0, 1) == "/" ? $_SERVER['REQUEST_URI'] : "/".$_SERVER['REQUEST_URI'] ?>">
-                <input type="text" name="nom" placeholder="Nom ou Email" class="block border border-gray-500 px-3 m-3 rounded-lg">
-                <input type="password" name="pass" placeholder="Mot de passe" class="block border border-gray-500 px-3 m-3 rounded-lg">
-                <button type="submit" class="mt-5 p-3 bg-gray-500 hover:bg-gray-800 text-white font-bold px-1 border-blue-700 hover:border-blue-500 rounded">
+              <form method="post" action=".<?= substr($_SERVER['REQUEST_URI'], 0, 1) == '/' ? str_replace("dc", "", $_SERVER['REQUEST_URI']) : '/'.str_replace("dc", "", $_SERVER['REQUEST_URI']) ?>">
+                <input type="text" name="nom" placeholder="Nom ou Email" class="block border border-gray-500 p-3 m-3 rounded-lg">
+                <input type="password" name="pass" placeholder="Mot de passe" class="block border border-gray-500 p-3 m-3 rounded-lg">
+                <button type="submit" class="mb-5 bg-gray-500 hover:bg-gray-800 text-white font-bold p-3 border-blue-700 hover:border-blue-500 rounded">
                   Connexion
                 </button>
               </form>
-              <p class="px-5">Pas encore inscrit ? 
+              <p class="pb-5">Pas encore inscrit ? 
                 <br/>
-                <a class="text-blue-700" href="./?s=inscription">Inscrivez-vous</a>
+                <a class="text-blue-700 font-bold" href="./?s=inscription">Inscrivez-vous</a>
               </p>
               <?php
             }

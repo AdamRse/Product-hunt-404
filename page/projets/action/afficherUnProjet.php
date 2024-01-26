@@ -55,16 +55,16 @@ echo "</pre>";
             <?php
             if($nbComm>0){
                 foreach ($projet['commentaires'] as $comm) {
-                    # code...
-                }
-                ?>
-                <div id="commentaires" class="hidden p-5">
-                    <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <p class="font-normal text-gray-700 dark:text-gray-400">fgghfghfg</p>
-                        <img src="./images/avatars/<?= $projet["avatar"] ?>" alt="Avatar" class="inline-block w-10 h-10 rounded-full mx-2"> Par <?= $comm['nom'] ?>
+                    ?>
+                    <div id="commentaires" class="hidden p-5">
+                        <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                            <p class="font-normal text-gray-700 dark:text-gray-400"><?= $comm['comment'] ?></p>
+                            <div class>Date : <?= $comm['ts'] ?></div>
+                            <img src="./images/avatars/<?= $comm["avatar"] ?>" alt="Avatar" class="inline-block w-10 h-10 rounded-full mx-2"> Par <?= $comm['nom'] ?>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
+                }
             }
             ?>
             <hr>

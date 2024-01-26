@@ -25,7 +25,7 @@
   else{
     ?>
     <div>
-      <form method="post" action=".<?=  ?>">
+      <form method="post" action=".<?= $_SERVER['REQUEST_URI'] ?>">
 
       </form>
     </div>

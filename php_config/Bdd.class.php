@@ -144,13 +144,26 @@ public function addProjetCategories($idProjet, $tabCategories){
     return $rt;
 }
 public function getProjets(){
-    $q = $this->query("SELECT projets.*,users.nom as createur, users.avatar FROM projets INNER JOIN users WHERE projets.users_id = users.id;");
+    $q = $this->query("SELECT projets.*,users.nom as createur, users.avatar FROM projets INNER JOIN users ON projets.users_id = users.id;");
     return $q->fetchAll(PDO::FETCH_ASSOC);
+}
+public function getProjet($id){
+    $q = $this->prepare("SELECT p.*,u.nom as createur, u.avatar FROM projets p INNER JOIN users u ON p.users_id = u.id WHERE p.id = ?");
+    $q->execute(array($id)); $this->checkError($q);
+    $projetUser = $q->fetch(PDO::FETCH_ASSOC);
+    $projetUser['commentaires']  = $this->getCommentairesProjet($id);
+    $projetUser['categories']  = $this->getCategoriesProjet($id);
+    return $projetUser;
 }
 //CATEGORIES
 public function getCategories($limit = 10){
     $q = $this->query("SELECT * FROM categories LIMIT 0, $limit");
-    $this->checkError($q);
+    $this->checkError($q); $this->checkError($q);
+    return $q->fetchAll(PDO::FETCH_ASSOC);
+}
+public function getCategoriesProjet($idProjet){
+    $q = $this->prepare("SELECT c.tag FROM projet_categories pc LEFT JOIN categories c ON pc.id_categories = c.id WHERE id_projet = ?");
+    $q->execute([$idProjet]); $this->checkError($q);
     return $q->fetchAll(PDO::FETCH_ASSOC);
 }
 public function addCategorie($categorie){
@@ -158,6 +171,37 @@ public function addCategorie($categorie){
     $q->execute([$categorie]); $this->checkError($q);
     return $q->fetch(PDO::FETCH_ASSOC);
 }
-
+//COMMENTAIRES
+public function getCommentairesUser($user, $getUser = true){
+    $sql = ($getUser) ? "SELECT c.* u.nom, u.avatar FROM commentaires c LEFT JOIN users u ON c.users_id = u.id WHERE user_id = ?" : "SELECT * FROM commentaires WHERE user_id = ?";
+    $q = $this->prepare($sql);
+    $q->execute([$user]); $this->checkError($q);
+    return $q->fetch(PDO::FETCH_ASSOC);
+}
+public function getCommentairesProjet($projet, $getUser = true){
+    $sql = ($getUser) ? "SELECT c.*, u.nom, u.avatar FROM commentaires c LEFT JOIN users u ON c.users_id = u.id WHERE c.projets_id = ?" : "SELECT * FROM commentaires WHERE projets_id = ?";
+    $q = $this->prepare($sql);
+    $q->execute([$projet]); $this->checkError($q);
+    return $q->fetchAll(PDO::FETCH_ASSOC);
+}
+public function addCommentaire($tabCommentaire){//On attend "comment" (le commentaire), "projet" (l'id du projet commenté), "user" (l'id de l'user qui commente)
+    $q = $this->prepare("INSERT INTO commentaires (comment, projets_id, users_id) VALUES(:comment, :projet, :user)");
+    $rt = $q->execute($tabCommentaire); $this->checkError($q);
+    return $rt;
+}
+//LIKES
+public function addLike($idUser, $idProjet){
+    $q = $this->prepare("UPDATE projets SET likes = likes+1 WHERE id = ?");
+    $q2 = $this->prepare("INSERT INTO likes (projets_id, users_id) VALUES (:p, :u)");
+    $rt = $q->execute([$idProjet]) && $q2->execute([$idUser, $idProjet]);
+    $this->checkError($q); $this->checkError($q2);
+    return $rt;
+}
+public function getLikesUser($id){
+    $q = $this->prepare("SELECT l.tq, COUNT(l.id) as nbLikes, p.nom as projectNom, p.id as projectId
+    FROM likes l LEFT JOIN users u ON l.users_id = u.id LEFT JOIN projets p ON l.projets_id = p.id WHERE l.users_id = ?");
+    $rt=$q->execute([$id]); $this->checkError($q);
+    return $rt;
+}
 }
 $Bdd = new Bdd();

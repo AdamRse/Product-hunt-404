@@ -144,7 +144,7 @@ public function addProjetCategories($idProjet, $tabCategories){
     return $rt;
 }
 public function getProjets(){
-    $q = $this->query("SELECT projets.*,users.nom as createur FROM projets INNER JOIN users WHERE projets.users_id = users.id;");
+    $q = $this->query("SELECT projets.*,users.nom as createur, users.avatar FROM projets INNER JOIN users WHERE projets.users_id = users.id;");
     return $q->fetchAll(PDO::FETCH_ASSOC);
 }
 //CATEGORIES

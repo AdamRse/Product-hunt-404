@@ -8,16 +8,17 @@
             </div>
             <div class="p-2">
                 <h3 class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['nom']?></h3>
-                <table class="text-xs my-3">
+                <table class="text-xs my-3 w-full">
                     <tbody>
                         <tr>
-                            <h3 class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['mail']?></h3>
+                            <td class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['mail']?></td>
                         </tr>
                         <tr>
-                            <!-- <h3 class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['likes']?></h3> -->
-                            <svg fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-1">
-                            <path d="M12 21.35l-1.45-1.32C5.4 14.25 2 11.15 2 7 2 4.24 4.24 2 7 2c1.74 0 3.41.81 5 2.19C16.59 2.81 18.26 2 20 2c2.76 0 5 2.24 5 5 0 4.15-3.4 7.25-8.55 13.03L12 21.35z"></path>
-                        </svg>
+                            <td class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['likes']?>
+                                <svg fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mx-1">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 14.25 2 11.15 2 7 2 4.24 4.24 2 7 2c1.74 0 3.41.81 5 2.19C16.59 2.81 18.26 2 20 2c2.76 0 5 2.24 5 5 0 4.15-3.4 7.25-8.55 13.03L12 21.35z"></path>
+                                </svg>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

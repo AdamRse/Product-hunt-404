@@ -40,7 +40,7 @@
             <?php
             if(USER){
               ?>
-              <a href="./?s=new_projet" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Créer un projet !</a>
+              <a href="./?s=new_project" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Créer un projet !</a>
               <?php
             }
             ?>

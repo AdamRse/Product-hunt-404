@@ -1,5 +1,5 @@
 <?php
-    if(USER){
+if(USER){
     if (!empty($_POST['nom']) && !empty($_POST['intro']) && !empty($_POST['detail']) && isset($_POST['lien']))
         {
             require "action/projetBdd.php";

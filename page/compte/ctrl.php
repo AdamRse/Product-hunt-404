@@ -1,6 +1,4 @@
 <?php
-
-
 if(USER){
     require "action/compte.php";
 }

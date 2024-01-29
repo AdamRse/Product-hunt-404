@@ -13,13 +13,13 @@
                         <tr>
                             <td class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['mail']?></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td class="text-center text-xl text-white font-medium leading-8"><?=$_SESSION['user']['likes']?>
                                 <svg fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mx-1">
                                     <path d="M12 21.35l-1.45-1.32C5.4 14.25 2 11.15 2 7 2 4.24 4.24 2 7 2c1.74 0 3.41.81 5 2.19C16.59 2.81 18.26 2 20 2c2.76 0 5 2.24 5 5 0 4.15-3.4 7.25-8.55 13.03L12 21.35z"></path>
                                 </svg>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
